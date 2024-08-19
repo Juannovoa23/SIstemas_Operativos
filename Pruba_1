@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int main() {
+    char *p;
+    char *q = NULL;
+
+
+    p = (char *)malloc(50 * sizeof(char));
+    if (p == NULL) {
+        printf("Error al asignar memoria.\n");
+        return 1;
+    }
+
+    q = (char *)malloc(10 * sizeof(char));
+    if (q == NULL) {
+        printf("Error al asignar memoria.\n");
+        free(p);
+        return 1;
+    }
+
+    printf("Address of p = %p\n", (void *)p);
+
+
+    strcpy(p, "Hello, I'm the best in Operating Systems!!!");
+    printf("%s\n", p);
+
+    printf("About to copy \"Goodbye\" to q\n");
+
+ 
+    strcpy(q, "Goodbye");
+    printf("String copied\n");
+    printf("%s\n", q);
+
+
+    free(p);
+    free(q);
+
+    return 0;
+}
